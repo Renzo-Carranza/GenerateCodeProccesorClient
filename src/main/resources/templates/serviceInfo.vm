@@ -1,0 +1,43 @@
+package ${packageName};
+
+import java.util.Collection;
+
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ${packageImport}.*;
+
+
+@Service
+@Transactional
+public class ${className}Service {
+        
+        @Autowired
+	protected ${className}Repository ${objectName}Repository;
+        
+	public ${className} save${className}(${className} ${className}) {
+		return ${objectName}Repository.save(${className});
+	}
+
+	public Boolean delete${className}(${classNameId} id) {
+		${className} temp = ${objectName}Repository.findOne(id);
+		if(temp!=null){
+                  ${objectName}Repository.delete(temp);
+                  return true;
+		}
+		return false;
+	}
+
+	public ${className} edit${className}(${className} ${objectName}) {
+		return ${objectName}Repository.save(${objectName});
+	}
+
+        public Collection<${className}> getAll${className}() {
+		Iterable<${className}> itr = ${objectName}Repository.findAll();
+		return (Collection<${className}>)itr;
+	}
+
+	public ${className} find${className}(${classNameId} id) {
+		return ${objectName}Repository.findOne(id);
+	}
+}

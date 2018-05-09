@@ -1,0 +1,53 @@
+package ${packageName};
+
+import java.util.List;
+import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ${packageImport}.*;
+
+@RestController
+@RequestMapping("${pathRest}")
+public class ${className}Controller {
+
+    @Autowired
+    ${className}Service ${objectName}Service;
+
+    @GetMapping("/getAll${className}")
+    public List<${className}> getAll() {
+        return (List<${className}>) ${objectName}Service.getAll${className}();
+    }
+
+    @PostMapping("/create${className}")
+    public ${className} create(@Valid @RequestBody ${className} ${objectName}) {
+        return ${objectName}Service.save${className}(${objectName});
+    }
+
+    @GetMapping("/get${className}ById/{id}")
+    public ${className} getById(@PathVariable(value = "id") ${classNameId} ${objectName}Id) {
+        ${className} ${objectName} = ${objectName}Service.find${className}(${objectName}Id);
+        return ${objectName};
+    }
+
+    @PutMapping("/update${className}/{id}")
+    public ${className} update(@PathVariable(value = "id") Long ${objectName}Id,
+            @Valid @RequestBody ${className} ${objectName}) {
+        ${objectName}.setId(${objectName}Id);
+        ${objectName}Service.save${className}(${objectName});
+        return ${objectName};
+    }
+
+    @DeleteMapping("/delete${className}/{id}")
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Long ${objectName}Id) {
+        ${objectName}Service.delete${className}(${objectName}Id);
+        return ResponseEntity.ok().build();
+    }
+}

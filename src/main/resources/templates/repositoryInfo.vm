@@ -1,0 +1,8 @@
+package ${packageName};
+
+import org.springframework.data.repository.CrudRepository;
+import ${packageImport}.*;
+
+public interface ${className}Repository extends CrudRepository<${className}, ${classNameId}> {
+
+}

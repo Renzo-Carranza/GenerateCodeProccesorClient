@@ -1,0 +1,13 @@
+package ${packageName};
+
+import java.util.Collection;
+
+
+public interface ${className}Service {
+
+	public ${className} save${className}(${className} ${objectName});
+	public Boolean delete${className}(${classNameId} id);
+	public ${className} edit${className}(${className} ${objectName});
+	public ${className} find${className}(${classNameId} id);
+	public Collection<${className}> getAll${className}();
+}
